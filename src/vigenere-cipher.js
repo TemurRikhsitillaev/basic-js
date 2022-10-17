@@ -29,36 +29,36 @@ class VigenereCipheringMachine {
     }
     let workStr = string.toUpperCase(),
       alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-      shifr = [],
-      stackShifr = key.split(""),
+      cipher = [],
+      stackCipher = key.split(""),
       result = [];
 
     for (let i = 0; i < string.length; i++) {
       if (string[i] === " ") {
-        shifr.push(" ");
-        stackShifr.unshift("!");
+        cipher.push(" ");
+        stackCipher.unshift("!");
       } else {
-        if (stackShifr[i] === undefined) {
-          stackShifr = key.split("");
+        if (stackCipher[i] === undefined) {
+          stackCipher = key.split("");
           string = string.slice(i);
           i = 0;
         }
-        shifr.push(stackShifr[i].toUpperCase());
+        cipher.push(stackCipher[i].toUpperCase());
       }
     }
     for (let i = 0; i < workStr.length; i++) {
       let index = 0;
       if (alphabet.indexOf(workStr[i]) > -1) {
         if (
-          alphabet.indexOf(workStr[i]) + alphabet.indexOf(shifr[i]) >
+          alphabet.indexOf(workStr[i]) + alphabet.indexOf(cipher[i]) >
           alphabet.length - 1
         ) {
           index = Math.abs(
             alphabet.length -
-              (alphabet.indexOf(workStr[i]) + alphabet.indexOf(shifr[i]))
+              (alphabet.indexOf(workStr[i]) + alphabet.indexOf(cipher[i]))
           );
         } else {
-          index = alphabet.indexOf(workStr[i]) + alphabet.indexOf(shifr[i]);
+          index = alphabet.indexOf(workStr[i]) + alphabet.indexOf(cipher[i]);
         }
         result.push(alphabet[index]);
       } else {
@@ -75,33 +75,33 @@ class VigenereCipheringMachine {
     }
     let workStr = string.toUpperCase(),
       alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-      shifr = [],
-      stackShifr = key.split(""),
+      cipher = [],
+      stackCipher = key.split(""),
       result = [];
 
     for (let i = 0; i < string.length; i++) {
       if (string[i] === " ") {
-        shifr.push(" ");
-        stackShifr.unshift("!");
+        cipher.push(" ");
+        stackCipher.unshift("!");
       } else {
-        if (stackShifr[i] === undefined) {
-          stackShifr = key.split("");
+        if (stackCipher[i] === undefined) {
+          stackCipher = key.split("");
           string = string.slice(i);
           i = 0;
         }
-        shifr.push(stackShifr[i].toUpperCase());
+        cipher.push(stackCipher[i].toUpperCase());
       }
     }
     for (let i = 0; i < workStr.length; i++) {
       let index = 0;
       if (alphabet.indexOf(workStr[i]) > -1) {
-        if (alphabet.indexOf(workStr[i]) < alphabet.indexOf(shifr[i])) {
+        if (alphabet.indexOf(workStr[i]) < alphabet.indexOf(cipher[i])) {
           index = Math.abs(
             alphabet.length +
-              (alphabet.indexOf(workStr[i]) - alphabet.indexOf(shifr[i]))
+              (alphabet.indexOf(workStr[i]) - alphabet.indexOf(cipher[i]))
           );
         } else {
-          index = alphabet.indexOf(workStr[i]) - alphabet.indexOf(shifr[i]);
+          index = alphabet.indexOf(workStr[i]) - alphabet.indexOf(cipher[i]);
         }
         result.push(alphabet[index]);
       } else {
